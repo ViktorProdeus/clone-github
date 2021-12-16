@@ -1,38 +1,266 @@
 .App {
-  text-align: center;
+    display: grid;
+    grid-template-rows: 72px 1fr;
+    margin: 0 auto;
+    background-color: var(--main-bg-color);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper {
+    max-width: 1366px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.center {
+    align-items: center;
+    justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    min-height: 72px;
+    background-color: var(--accent-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header__wrapper {
+    display: flex;
+    align-items: center;
 }
+
+.header__field {
+    position: relative;
+    width: 100%;
+}
+
+.header label {
+    position: relative;
+}
+
+.header input {
+    max-width: 500px;
+    width: 100%;
+    height: 40px;
+    padding: 0 20px 0 40px;
+    font: inherit;
+    border-radius: 6px;
+    background-color: var(--light-color);
+    border: none;
+}
+
+.icon-search {
+    fill: var(--icon-color);
+    margin-right: 0;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo {
+    margin-right: 15px;
+}
+
+.main {
+    display: flex;
+    padding: 28px 56px;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+}
+
+.user {
+    margin: 10px 85px 0 0;
+    flex-shrink: 0;
+}
+
+.user img {
+    display: block;
+    margin-bottom: 30px;
+
+    border-radius: 50%;
+}
+
+.user__description h3 {
+    margin: 0 0 30px;
+    padding: 0;
+}
+
+.user__heading span {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 34px;
+}
+
+.user__heading a {
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--accent-color);
+    transition: opacity var(--transition-default);
+}
+
+.repositories__item a:hover,
+.repositories__item a:focus,
+.user__heading a:hover,
+.user__heading a:focus {
+    opacity: 0.7;
+}
+
+.user__followers {
+    display: flex;
+}
+
+.user__followers p {
+    margin: 0 16px 0 0;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.user__followers p:last-child {
+    margin-right: 0;
+}
+
+.user__followers span {
+    margin-right: 5px;
+}
+
+.iconUser,
+.iconUsers {
+    margin-right: 8px;
+    color: var(--icon-color);
+}
+
+.repositories {
+    flex-grow: 1;
+}
+
+.repositories h3 {
+    margin: 0 0 30px 10px;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 42px;
+}
+
+.repositories__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.repositories__item {
+    margin-bottom: 24px;
+    padding: 24px 32px;
+    background-color: var(--light-color);
+    border-radius: 6px;
+}
+
+.repositories__item a {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: opacity var(--transition-default);
+}
+
+.repositories__item p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.UserNotFoundPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--icon-color);
+}
+
+.UserNotFoundPage svg {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.UserNotFoundPage p {
+    margin: 0;
+    font-size: 22px;
+    line-height: 31px;
+}
+
+@media screen and (max-width: 960px) {
+    .main {
+        padding: 28px 20px;
+        flex-wrap: wrap;
+    }
+
+    .user {
+        margin: 0 0 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .user__description {
+        margin: 0 0 0 70px;
+    }
+
+    .repositories {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .user {
+        flex-wrap: wrap;
+    }
+
+    .user img {
+        margin: 0 auto 50px;
+    }
+
+    .user__description {
+        margin: 0;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .user__followers p {
+        font-size: 14px;
+    }
+
+    .repositories h3 {
+        margin: 0 0 30px 0;
+        font-size: 28px;
+    }
+
+    .repositories__item {
+        padding: 20px 15px;
+    }
+
+    .repositories__item a {
+        font-size: 20px;
+    }
+
+    .repositories__item p {
+        font-size: 14px;
+    }
+}
+

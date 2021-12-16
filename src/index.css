@@ -1,13 +1,64 @@
+:root {
+    --main-bg-color: #f9f9f9;
+    --accent-color: #0064eb;
+    --icon-color: #808080;
+    --light-color: white;
+    --dark-color: black;
+
+    --transition-default:  .3s ease;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: border-box;
+
+}
+
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--dark-color);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* helpers */
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
