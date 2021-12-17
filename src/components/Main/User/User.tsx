@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
 import { AppRootStateType } from '../../../redux/store';
 
 const User = () => {
@@ -36,7 +35,6 @@ const User = () => {
                     </p>
                 </div>
             </div>
-            <Outlet />
         </div>
     );
 };

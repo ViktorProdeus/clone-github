@@ -73,21 +73,17 @@ export const setData = (userName: string): AppThunkType => {
         dispatch(setLoading(true))
         githubAPI.getUser(userName)
             .then(res => {
-                console.log(res)
                 dispatch(setUserData(res))
                 dispatch(setError(""))
             })
 
         githubAPI.getRepos(userName)
             .then(res => {
-                console.log(res)
                 dispatch(setReposData(res))
             })
 
             .catch(res => {
-
                 if (res.message) {
-                    console.log(res.message)
                     dispatch(setError(res.message))
                 }
 

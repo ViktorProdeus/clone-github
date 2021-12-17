@@ -21,6 +21,7 @@
 }
 
 .center {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -59,7 +60,7 @@
 }
 
 .icon-search {
-    fill: var(--icon-color);
+    color: var(--icon-color);
     margin-right: 0;
     position: absolute;
     left: 15px;
@@ -185,23 +186,24 @@
     line-height: 19px;
 }
 
-.UserNotFoundPage {
+.page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--icon-color);
+    text-align: center;
+    font-size: 22px;
+    line-height: 31px;
 }
 
-.UserNotFoundPage svg {
+.page svg {
     display: block;
     margin-bottom: 30px;
 }
 
-.UserNotFoundPage p {
+.page p {
     margin: 0;
-    font-size: 22px;
-    line-height: 31px;
 }
 
 @media screen and (max-width: 960px) {

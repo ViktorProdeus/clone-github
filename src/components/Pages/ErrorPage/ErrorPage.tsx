@@ -1,10 +1,16 @@
 import React from 'react';
+import Main from '../../Main/Main';
 
 const ErrorPage = () => {
     return (
-        <div>
-           <h1>ErrorPage</h1>
-        </div>
+        <Main className="center">
+            <div className="page">
+                <p>
+                    error 404
+                    <br />Page not found
+                </p>
+            </div>
+        </Main>
     );
 };
 

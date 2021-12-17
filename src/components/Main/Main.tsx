@@ -1,4 +1,3 @@
-import { IconProps } from '@primer/octicons-react';
 import React from 'react';
 
 type PropsType =  {
