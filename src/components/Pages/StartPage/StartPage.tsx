@@ -1,7 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from 'react-router-dom';
+import { AppRootStateType } from '../../../redux/store';
 import Main from '../../Main/Main';
 
 const StartPage = () => {
+    const state = useSelector((state: AppRootStateType) => state.reducer);
+    const status = state.status;
+    const error = state.error;
+
+    if(status) {
+        return <Navigate to={"/user"}/>
+    }
+
+    if(error) {
+        return <Navigate to={"/error"}/>
+    }
+
     return (
         <Main className="center">
             <div className="page">
@@ -16,6 +31,7 @@ const StartPage = () => {
                     <br />a GitHub user
                 </p>
             </div>
+            <Outlet/>
         </Main>
     );
 };

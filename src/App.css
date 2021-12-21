@@ -68,8 +68,18 @@
     transform: translateY(-50%);
 }
 
-.logo {
+.linkLogo {
     margin-right: 15px;
+}
+
+.linkLogo:hover svg {
+    color: var(--dark-color);
+    transition: color var(--transition-default);
+}
+
+.logo {
+    transition: color var(--transition-default);
+    color: white;
 }
 
 .main {
@@ -116,7 +126,7 @@
 .repositories__item a:focus,
 .user__heading a:hover,
 .user__heading a:focus {
-    opacity: 0.7;
+    opacity: var(--opacity-default);
 }
 
 .user__followers {

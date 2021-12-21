@@ -8,6 +8,7 @@ export const githubAPI = {
     getUser(userName: string) {
         return instance.get<UserDataType>(`users/${userName}`)
             .then(res => {
+
                 return {
                     avatar_url: res.data.avatar_url,
                     name: res.data.name,
@@ -21,9 +22,9 @@ export const githubAPI = {
 
     },
 
-    getRepos(userName: string) {
+    getRepos(userName: string, perPage: number, page: number) {
 
-        return instance.get<any>(`users/${userName}/repos`)
+        return instance.get<UserRepoType[]>(`users/${userName}/repos?per_page=${perPage}&page=${page}`)
             .then(res => {
                 const repos = res.data.map((repo: UserRepoType) => {
                     return {
