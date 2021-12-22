@@ -4,6 +4,7 @@
     --icon-color: #808080;
     --light-color: white;
     --dark-color: black;
+    --disabled-color: rgba(0, 0, 0, 0.2);
 
     --transition-default:  .3s ease;
     --opacity-default: 0.6;

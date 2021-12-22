@@ -1,3 +1,6 @@
+/* rc-pagination */
+@import "assets/rc-pagination/css/style.css";
+
 .App {
     display: grid;
     grid-template-rows: 72px 1fr;
@@ -6,12 +9,39 @@
 }
 
 .Preloader {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 
     min-height: 100vh;
     width: 100%;
+    color: var(--icon-color);
+}
+
+.Preloader h1 {
+    margin-bottom: 20px;
+}
+
+.Preloader svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.preloader-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    color: var(--accent-color);
+}
+
+.preloader-img svg {
+    width: 150px;
+    height: 150px;
 }
 
 .wrapper {

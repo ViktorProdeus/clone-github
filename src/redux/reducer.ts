@@ -2,8 +2,9 @@ import { githubAPI, UserDataType, UserRepoType } from "../api/githubAPI";
 import { AppThunkType } from "./store";
 
 const initialState = {
+    isPhotoFetching: false,
     currentPage: 1,
-    perPage: 5,
+    perPage: 4,
     error: "",
     loading: false,
     status: false,
@@ -20,6 +21,7 @@ const SET_ERROR = "main/SET_ERROR" as const;
 const SET_STATUS = "main/SET_STATUS" as const;
 const SET_CURRENT_PAGE = "main/SET_CURRENT_PAGE" as const;
 const SET_PER_PAGE = "main/SET_PER_PAGE" as const;
+const SET_FETCHING_PHOTO = "main/SET_FETCHING_PHOTO" as const;
 
 export const reducer = (state = initialState, action: ActionsType): reducerStateType => {
     switch (action.type) {
@@ -29,6 +31,7 @@ export const reducer = (state = initialState, action: ActionsType): reducerState
         case SET_STATUS:
         case SET_LOADING:
         case SET_PER_PAGE:
+        case SET_FETCHING_PHOTO:
         case SET_CURRENT_PAGE:
 
             return {
@@ -91,6 +94,13 @@ export const setCurrentPage = (currentPage: number) => {
     }
 };
 
+export const setFetchingPhoto = (fetching: boolean) => {
+    return {
+        type: SET_FETCHING_PHOTO,
+        payload: {isPhotoFetching: fetching}
+    }
+};
+
 // thunks
 export const setData = (userName: string, perPage: number, page: number): AppThunkType => {
     return (dispatch) => {
@@ -125,7 +135,6 @@ export const setRepos = (userName: string, perPage: number, page: number): AppTh
         dispatch(setLoading(true))
         githubAPI.getRepos(userName, perPage, page)
             .then(res => {
-                console.log(res)
                 dispatch(setReposData(res))
             })
 
@@ -152,5 +161,6 @@ export type ActionsType = ReturnType<typeof setUserData>
     | ReturnType<typeof setError>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof setPerPage>
+    | ReturnType<typeof setFetchingPhoto>
     | SetCurrentPageType
     | ReturnType<typeof setLoading>;

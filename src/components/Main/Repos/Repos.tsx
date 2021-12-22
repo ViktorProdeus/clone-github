@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserRepoType } from '../../../api/githubAPI';
-import localeInfo from '../../../Locale/en_US';
+import locale from '../../../assets/rc-pagination/Locale/en_US';
 import { setCurrentPage, setRepos } from '../../../redux/reducer';
 import { AppRootStateType } from '../../../redux/store';
-import Pagination from '../../Pagination/Pagination';
-// import Pagination from 'rc-pagination';
+import Pagination from 'rc-pagination';
 
 const Repos = () => {
     const state = useSelector((state: AppRootStateType) => state.reducer);
@@ -18,26 +17,20 @@ const Repos = () => {
 
     const dispatch = useDispatch();
 
-    // Get current posts
-    const indexOfLastRepo = currentPage * perPage;
-    const indexOfFirstRepo = indexOfLastRepo - perPage;
-    const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
-
     // Change page
     const paginate = (pageNumber: number) => {
-        setCurrentPage(pageNumber)
-        dispatch(setRepos(userName, perPage, pageNumber))
+        dispatch(setCurrentPage(pageNumber));
+        dispatch(setRepos(userName, perPage, pageNumber));
     };
-
 
     return (
         <div className={reposLength !== 0 ? "repositories" : "repositories center"}>
-            {reposLength !== 0 ? <>
+            {reposLength !== null && reposLength > 0 ? <>
                     <h3>Repositories <span>({reposLength})</span></h3>
 
                     <ul className="repositories__list">
                         {
-                            currentRepos.map((repo: UserRepoType) => {
+                            repos.map((repo: UserRepoType) => {
                                 return (
                                     <li key={repo.id} className="repositories__item">
                                         <a rel="noreferrer" target="_blank" href={repo.html_url}>{repo.name}</a>
@@ -49,22 +42,20 @@ const Repos = () => {
                     </ul>
 
                     <div className="repositories__pagination pagination">
-                        <Pagination
-                            perPage={perPage}
-                            totalPages={reposLength as number}
-                            paginate={paginate}
-                        />
 
-                        {/*<Pagination*/}
-                        {/*    showTitle={true}*/}
-                        {/*    current={currentPage}*/}
-                        {/*    className="ant-pagination"*/}
-                        {/*    onChange={(e) => paginate(e)}*/}
-                        {/*    defaultCurrent={currentPage}*/}
-                        {/*    defaultPageSize={perPage}*/}
-                        {/*    total={reposLength as number}*/}
-                        {/*    locale={localeInfo}*/}
-                        {/*/>*/}
+                        <Pagination
+                            className="ant-pagination"
+                            showTitle={false}
+                            current={currentPage}
+                            onChange={(e) => paginate(e)}
+                            defaultCurrent={currentPage}
+                            defaultPageSize={perPage}
+                            total={reposLength as number}
+                            showTotal={(total, range) => {
+                                return `${range[0]} - ${range[1]} of ${total} items`
+                            }}
+                            locale={locale}
+                        />
                     </div>
                 </>
                 :

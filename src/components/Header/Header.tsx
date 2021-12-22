@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { reducerStateType, setData, setError, setStatus } from '../../redux/reducer';
+import { Link } from 'react-router-dom';
+import { reducerStateType, setCurrentPage, setData, setError, setStatus } from '../../redux/reducer';
 import { AppRootStateType } from '../../redux/store';
 
 
@@ -47,12 +47,13 @@ const Header = () => {
                         placeholder="Enter Github username"
                         value={userName}
                         onChange={(e) => {
-                            setUserName(e.currentTarget.value)
+                            setUserName(e.currentTarget.value);
                         }}
                         onKeyPress={(e) => {
                             if (e.key === "Enter") {
-                                dispatch(setData(userName, perPage, currentPage))
-                                setUserName("")
+                                dispatch(setCurrentPage(1))
+                                dispatch(setData(userName, perPage, currentPage));
+                                setUserName("");
                             }
                         }}
                     />
